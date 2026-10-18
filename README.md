@@ -187,7 +187,7 @@ dsh plugin --profile web add dsh-local-model
 
 本插件已内置两道防护：
 
-1. **探测默认走宿主进程**（`ctx.remote.llm.discoverModels()`）——由 Node 侧发起请求，
+1. **探测默认走宿主进程**（`ctx.get("remote.llm").discoverModels()`）——由 Node 侧发起请求，
    完全绕开浏览器的 CORS / IPv6 / Electron 网络策略；
 2. 默认地址一律用 **`127.0.0.1`** 而不是 `localhost`，并对回环地址做
    `localhost ⇄ 127.0.0.1` 的自动兜底重试。

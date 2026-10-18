@@ -3,6 +3,15 @@
 本项目遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/) 与
 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [Unreleased]
+
+### 修复
+
+- **「测试连接」报 `cannot get property "remote.llm" without inject`**：客户端半身
+  通过 `ctx.remote.llm` 访问宿主探测服务，却未在 `inject` 中声明 `remote.llm`，
+  访问被 Cordis 服务访问器拦截。改用 `ctx.get("remote.llm")` 按名读取（不校验
+  inject），宿主服务不可用时仍照旧回退到浏览器直连。
+
 ## [1.0.0] - 2026-10-14
 
 首个版本。
