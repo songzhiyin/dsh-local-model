@@ -3,6 +3,15 @@
 本项目遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/) 与
 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [Unreleased]
+
+### 修复
+
+- **Ollama 原生 API 下「已调用工具」后下一轮必然 400**：历史里 assistant 的
+  `tool_calls[].function.arguments` 沿用了 OpenAI 协议的 JSON 字符串，而 Ollama
+  要求对象，服务端会以 `Value looks like object, but can't find closing '}' symbol`
+  拒绝整个请求。新增 `toOllamaMessages()` 单独把参数转成对象，OpenAI 兼容路径保持不变。
+
 ## [1.0.0] - 2026-10-14
 
 首个版本。
